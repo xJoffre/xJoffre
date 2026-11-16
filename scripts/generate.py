@@ -7,40 +7,38 @@ ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 ASSETS = ROOT / "assets"
 
-PRINT = "font-family:'Libre Franklin','Helvetica Neue',Arial,sans-serif"
-SIZES = {"name": 44, "message": 21, "address": 21, "card_title": 28, "card_text": 17, "thesis": 18, "label": 14,
-         "stamp_name": 13, "stamp_area": 10, "stamp_caption": 12, "postmark": 13, "postmark_year": 16}
+FONT = "font-family:'Libre Franklin','Helvetica Neue',Arial,sans-serif"
+SIZES = {"title": 62, "subtitle": 21, "wall": 18, "placard_title": 24, "placard_medium": 15, "placard_text": 16, "placard_meta": 13,
+         "label_title": 18, "label_medium": 13, "label_text": 13, "material": 15}
 THEMES = {
-    "light": {"paper": "#FDFDFB", "edge": "#DDDDD6", "line": "#D8D8D2", "ink": "#24324A", "ink_soft": "#3A4660", "text": "#222222", "muted": "#6B6B6B",
-              "postmark": "#3A3A3A", "stamp_border": "#FFFFFF", "mini_stamp": "#EEF2F6", "sheet": "#FFFFFF", "sheet_ink": "#24324A",
-              "tints": {"IA": "#FCEFD9", "Web": "#E3EEFF", "Backend": "#FDE3E6", "Móvil": "#E2F5EA", "Juegos": "#EEE6FB"}},
-    "dark": {"paper": "#1C2128", "edge": "#30363D", "line": "#30363D", "ink": "#D2DCEB", "ink_soft": "#AEB9C9", "text": "#E6EDF3", "muted": "#9198A1",
-             "postmark": "#8B949E", "stamp_border": "#E6EDF3", "mini_stamp": "#2A313B", "sheet": "#22272E", "sheet_ink": "#E6EDF3",
-             "tints": {"IA": "#3A2F1E", "Web": "#1E2A3D", "Backend": "#3A1F24", "Móvil": "#1E3328", "Juegos": "#2C2440"}},
+    "light": {"ink": "#222222", "soft": "#6B6B6B", "card": "#FFFFFF", "edge": "#DADADA", "title": "#151515", "medium": "#555555",
+              "text": "#222222", "meta": "#777777", "frame": "#151515", "mat": "#FFFFFF"},
+    "dark": {"ink": "#E6EDF3", "soft": "#9198A1", "card": "#161B22", "edge": "#30363D", "title": "#F0F6FC", "medium": "#9198A1",
+             "text": "#C9D1D9", "meta": "#8B949E", "frame": "#C9D1D9", "mat": "#161B22"},
 }
-LANDSCAPE = {"sky": "#DCEBF5", "hill": "#3E7A5B", "hill_dark": "#2C5D44", "sun": "#F2C14E", "caption": "#1F3A5F", "town": "#FFFFFF"}
 
 NAME = "Joffre Orellana"
-MESSAGE = ("Hola, soy Joffre. Me gradué de Ingeniería en Ciencias de la Computación en la UNL, en Loja. Hago apps web y móviles, "
-           "y en mi tesis entrené un modelo que encuentra llantas defectuosas. Abajo te dejo lo que he hecho. Un saludo, Joffre.")
-ADDRESS = ["Para: tu equipo", "Asunto: hola", "De: Loja, Ecuador"]
-POSTMARK = "LOJA   NOV 2026   UNL"
+PERIOD = "Obras, 2025–2026"
+WALL_TEXT = ("Hola, soy Joffre. Me gradué de Ingeniería en Ciencias de la Computación en la UNL, en Loja. "
+             "Hago apps web y móviles, y en mi tesis entrené un modelo que encuentra llantas defectuosas.")
 PROJECTS = [
-    {"slug": "aura", "name": "AURA", "icon": "expo", "summary": "Una app de citas que hice para el emprendimiento de un cliente. Está en Google Play."},
-    {"slug": "pic", "name": "Defectos en llantas", "icon": "tensorflow", "summary": "Mi tesis: un modelo que separa llantas buenas de defectuosas. Acierta el 94,9 % en prueba."},
-    {"slug": "el-mirador", "name": "El Mirador", "icon": "springboot", "summary": "Un sistema de pedidos para un bar-restaurante. La cocina ve cada pedido en vivo."},
-    {"slug": "jengat", "name": "Jengat", "icon": "godotengine", "summary": "Un juego de fiesta en 3D para Android, con una torre de bloques y física real."},
+    {"slug": "aura", "name": "AURA", "year": "2026", "medium": "React Native, Expo, Firebase y Cloud Functions",
+     "text": "Una app de citas que hice para el emprendimiento de un cliente. Está en Google Play.", "collection": "Colección Google Play"},
+    {"slug": "pic", "name": "Defectos en llantas", "year": "2025–2026", "medium": "Python, TensorFlow, Keras y OpenCV",
+     "text": "Mi tesis: un modelo que separa llantas buenas de defectuosas. Acierta el 94,9 % en prueba.", "collection": "Tesis de grado, Universidad Nacional de Loja"},
+    {"slug": "el-mirador", "name": "El Mirador", "year": "2026", "medium": "Java 25, Spring Boot, PostgreSQL y React",
+     "text": "Un sistema de pedidos para un bar-restaurante. La cocina ve cada pedido en vivo.", "collection": "Colección personal"},
+    {"slug": "jengat", "name": "Jengat", "year": "2026", "medium": "Godot 4.6 y GDScript",
+     "text": "Un juego de fiesta en 3D para Android, con una torre de bloques y física real.", "collection": "Colección personal"},
 ]
-THESIS = "Mi tesis: transfer learning sobre VGG16. Acierta 242 de 255 llantas de prueba y encuentra 126 de las 130 defectuosas."
-PANELS = [("gc-original.jpg", "original"), ("gc-buena.jpg", "clase buena"), ("gc-defectuosa.jpg", "clase defectuosa")]
+THESIS = {"title": "Qué mira el modelo", "year": "2025–2026", "medium": "Grad-CAM sobre VGG16",
+          "text": "Acierta 242 de 255 llantas de prueba y encuentra 126 de las 130 defectuosas."}
+PANELS = ["gc-original.jpg", "gc-buena.jpg", "gc-defectuosa.jpg"]
 PANEL_RATIO = 241 / 427
-STACK = {
-    "IA": [("python", "Python"), ("tensorflow", "TensorFlow"), ("keras", "Keras"), ("opencv", "OpenCV")],
-    "Web": [("typescript", "TypeScript"), ("javascript", "JavaScript"), ("react", "React"), ("vite", "Vite"), ("tailwindcss", "Tailwind")],
-    "Backend": [("openjdk", "Java"), ("springboot", "Spring"), ("postgresql", "PostgreSQL"), ("docker", "Docker"), ("githubactions", "Actions")],
-    "Móvil": [("expo", "Expo"), ("firebase", "Firebase"), ("android", "Android")],
-    "Juegos": [("godotengine", "Godot")],
-}
+MATERIALS = [("python", "Python"), ("tensorflow", "TensorFlow"), ("keras", "Keras"), ("opencv", "OpenCV"), ("typescript", "TypeScript"),
+             ("javascript", "JavaScript"), ("react", "React"), ("vite", "Vite"), ("tailwindcss", "Tailwind"), ("openjdk", "Java"),
+             ("springboot", "Spring"), ("postgresql", "PostgreSQL"), ("docker", "Docker"), ("githubactions", "Actions"), ("expo", "Expo"),
+             ("firebase", "Firebase"), ("android", "Android"), ("godotengine", "Godot")]
 
 
 def encode(path):
@@ -48,13 +46,12 @@ def encode(path):
 
 
 FONT_FACES = {
-    PRINT: "@font-face{font-family:'Libre Franklin';font-weight:400 700;"
-           f"src:url(data:font/woff2;base64,{encode(SCRIPTS / 'fonts' / 'libre-franklin.woff2')}) format('woff2')}}",
+    "normal": "@font-face{font-family:'Libre Franklin';font-weight:400 700;"
+              f"src:url(data:font/woff2;base64,{encode(SCRIPTS / 'fonts' / 'libre-franklin.woff2')}) format('woff2')}}",
+    "italic": "@font-face{font-family:'Libre Franklin';font-style:italic;font-weight:400 700;"
+              f"src:url(data:font/woff2;base64,{encode(SCRIPTS / 'fonts' / 'libre-franklin-italic.woff2')}) format('woff2')}}",
 }
 ICON_PATHS = {path.stem: re.search(r' d="([^"]+)"', path.read_text(encoding="utf-8")).group(1) for path in (SCRIPTS / "icons").glob("*.svg")}
-
-
-LIFT = '<defs><filter id="lift" x="-5%" y="-5%" width="110%" height="110%"><feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-opacity=".22"/></filter></defs>'
 
 
 def icon(slug, cx, cy, size, color):
@@ -67,79 +64,51 @@ def wrapped(x, y, text, width, leading):
 
 
 def svg(width, height, label, body):
-    faces = "".join(face for family, face in FONT_FACES.items() if family in body)
-    if "url(#lift)" in body:
-        body = LIFT + body
+    faces = FONT_FACES["normal"] + (FONT_FACES["italic"] if "font-style:italic" in body else "")
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" '
             f'role="img" aria-label="{label}"><style>{faces}</style>{body}</svg>')
 
 
-def perforated(x, y, width, height, mask_id, fill, inner):
-    holes = "".join(f'<circle cx="{x + i * 12}" cy="{y}" r="4"/><circle cx="{x + i * 12}" cy="{y + height}" r="4"/>' for i in range(int(width // 12) + 1))
-    holes += "".join(f'<circle cx="{x}" cy="{y + i * 12}" r="4"/><circle cx="{x + width}" cy="{y + i * 12}" r="4"/>' for i in range(int(height // 12) + 1))
-    return (f'<mask id="{mask_id}"><rect x="{x - 6}" y="{y - 6}" width="{width + 12}" height="{height + 12}" fill="#FFFFFF"/><g fill="#000000">{holes}</g></mask>'
-            f'<g filter="url(#lift)"><g mask="url(#{mask_id})"><rect x="{x - 4}" y="{y - 4}" width="{width + 8}" height="{height + 8}" fill="{fill}"/>{inner}</g></g>')
+def wall(colors):
+    body = (f'<text x="0" y="78" style="{FONT};font-size:{SIZES["title"]}px;font-weight:600;letter-spacing:-1px" fill="{colors["ink"]}">{NAME}</text>'
+            f'<text x="2" y="116" style="{FONT};font-size:{SIZES["subtitle"]}px" fill="{colors["soft"]}">{PERIOD}</text>'
+            f'<line x1="2" y1="146" x2="60" y2="146" stroke="{colors["ink"]}" stroke-width="2"/>'
+            f'<text style="{FONT};font-size:{SIZES["wall"]}px" fill="{colors["ink"]}">{wrapped(2, 186, WALL_TEXT, 82, 28)}</text>')
+    return svg(1000, 260, f"{NAME}. {PERIOD}. {WALL_TEXT}", body)
 
 
-def postcard(colors):
-    land = LANDSCAPE
-    art = (f'<rect x="792" y="48" width="132" height="152" fill="{land["sky"]}"/>'
-           f'<polygon points="792,170 830,110 862,150 890,100 924,160 924,200 792,200" fill="{land["hill"]}"/>'
-           f'<polygon points="792,185 845,140 900,180 924,170 924,200 792,200" fill="{land["hill_dark"]}"/><circle cx="900" cy="80" r="14" fill="{land["sun"]}"/>'
-           f'<text x="800" y="70" style="{PRINT};font-size:{SIZES["stamp_caption"]}px;font-weight:700" fill="{land["caption"]}">ECUADOR</text>'
-           f'<text x="916" y="194" text-anchor="end" style="{PRINT};font-size:{SIZES["stamp_caption"]}px;font-weight:700" fill="{land["town"]}">Loja</text>')
-    mark = colors["postmark"]
-    waves = "".join(f'<path d="M 770 {100 + i * 16} q 20 -8 40 0 t 40 0 t 40 0 t 40 0" fill="none" stroke="{mark}" stroke-width="2.2"/>' for i in range(4))
-    postmark = (f'<g opacity="0"><animate attributeName="opacity" from="0" to=".85" begin=".6s" dur=".15s" fill="freeze"/>'
-                f'<circle cx="702" cy="128" r="62" fill="none" stroke="{mark}" stroke-width="3"/><circle cx="702" cy="128" r="44" fill="none" stroke="{mark}" stroke-width="2"/>'
-                f'<text style="{PRINT};font-size:{SIZES["postmark"]}px;font-weight:700;letter-spacing:3px" fill="{mark}" xml:space="preserve"><textPath href="#ring" startOffset="2%">{POSTMARK}</textPath></text>'
-                f'<text x="702" y="134" text-anchor="middle" style="{PRINT};font-size:{SIZES["postmark_year"]}px;font-weight:700" fill="{mark}">2026</text>{waves}</g>')
-    lines = "".join(f'<line x1="560" y1="{y}" x2="950" y2="{y}" stroke="{colors["line"]}" stroke-width="1.5"/>' for y in (330, 380, 430))
-    address = "".join(f'<text x="566" y="{320 + i * 50}" style="{PRINT};font-size:{SIZES["address"]}px" fill="{colors["ink"]}">{row}</text>' for i, row in enumerate(ADDRESS))
-    body = (f'<defs><path id="ring" d="M 640 128 a 62 62 0 1 1 124 0 a 62 62 0 1 1 -124 0"/></defs>'
-            f'<rect x="1" y="1" width="998" height="498" rx="6" fill="{colors["paper"]}" stroke="{colors["edge"]}"/>'
-            f'<line x1="520" y1="40" x2="520" y2="460" stroke="{colors["line"]}" stroke-width="2"/>'
-            f'<text x="40" y="84" style="{PRINT};font-size:{SIZES["name"]}px;font-weight:600;letter-spacing:-.5px" fill="{colors["ink"]}">{NAME}</text>'
-            f'<text style="{PRINT};font-size:{SIZES["message"]}px" fill="{colors["ink"]}">{wrapped(42, 142, MESSAGE, 38, 34)}</text>'
-            f'{perforated(786, 42, 144, 164, "stamp", colors["stamp_border"], art)}{postmark}{lines}{address}')
-    return svg(1000, 500, MESSAGE, body)
+def placard(colors, project):
+    body = (f'<rect x="1" y="1" width="498" height="218" fill="{colors["card"]}" stroke="{colors["edge"]}"/>'
+            f'<text x="28" y="50" style="{FONT};font-size:{SIZES["placard_title"]}px" fill="{colors["title"]}"><tspan font-weight="700">{project["name"]}</tspan>, {project["year"]}</text>'
+            f'<text x="28" y="78" style="{FONT};font-size:{SIZES["placard_medium"]}px;font-style:italic" fill="{colors["medium"]}">{project["medium"]}</text>'
+            f'<text style="{FONT};font-size:{SIZES["placard_text"]}px" fill="{colors["text"]}">{wrapped(28, 112, project["text"], 50, 23)}</text>'
+            f'<text x="28" y="196" style="{FONT};font-size:{SIZES["placard_meta"]}px" fill="{colors["meta"]}">{project["collection"]}</text>')
+    return svg(500, 220, f'{project["name"]}, {project["year"]}. {project["medium"]}. {project["text"]} {project["collection"]}.', body)
 
 
-def project_card(colors, project):
-    stamp = perforated(406, 22, 66, 76, "stamp", colors["sheet"],
-                       f'<rect x="410" y="26" width="58" height="68" fill="{colors["mini_stamp"]}"/>{icon(project["icon"], 439, 60, 30, colors["ink"])}')
-    body = (f'<rect x="1" y="1" width="498" height="198" rx="6" fill="{colors["paper"]}" stroke="{colors["edge"]}"/>{stamp}'
-            f'<text x="28" y="60" style="{PRINT};font-size:{SIZES["card_title"]}px;font-weight:600" fill="{colors["ink"]}">{project["name"]}</text>'
-            f'<text style="{PRINT};font-size:{SIZES["card_text"]}px" fill="{colors["ink_soft"]}">{wrapped(30, 106, project["summary"], 38, 26)}</text>')
-    return svg(500, 200, f'{project["name"]}: {project["summary"]}', body)
-
-
-def thesis(colors, height=220, gap=16):
+def framed_thesis(colors, height=200, gap=12):
     width = height * PANEL_RATIO
+    frame_width = 3 * width + 2 * gap + 80
+    body = f'<rect x="2" y="2" width="{frame_width:.0f}" height="{height + 76}" fill="{colors["mat"]}" stroke="{colors["frame"]}" stroke-width="5"/>'
+    body += "".join(f'<image href="data:image/jpeg;base64,{encode(SCRIPTS / "img" / file)}" x="{40 + i * (width + gap):.1f}" y="40" '
+                    f'width="{width:.1f}" height="{height}" preserveAspectRatio="xMidYMid slice"/>' for i, file in enumerate(PANELS))
+    x = frame_width + 40
+    body += (f'<rect x="{x:.0f}" y="110" width="340" height="150" fill="{colors["card"]}" stroke="{colors["edge"]}"/>'
+             f'<text x="{x + 22:.0f}" y="146" style="{FONT};font-size:{SIZES["label_title"]}px" fill="{colors["title"]}"><tspan font-weight="700">{THESIS["title"]}</tspan>, {THESIS["year"]}</text>'
+             f'<text x="{x + 22:.0f}" y="168" style="{FONT};font-size:{SIZES["label_medium"]}px;font-style:italic" fill="{colors["medium"]}">{THESIS["medium"]}</text>'
+             f'<text style="{FONT};font-size:{SIZES["label_text"]}px" fill="{colors["text"]}">{wrapped(x + 22, 194, THESIS["text"], 38, 18)}</text>')
+    return svg(1000, height + 82, f'{THESIS["title"]}, {THESIS["year"]}. {THESIS["medium"]}. {THESIS["text"]}', body)
+
+
+def materials(colors, per_row=9):
     body = ""
-    for i, (file, label) in enumerate(PANELS):
-        x = i * (width + gap)
-        body += (f'<image href="data:image/jpeg;base64,{encode(SCRIPTS / "img" / file)}" x="{x:.1f}" y="10" '
-                 f'width="{width:.1f}" height="{height}" preserveAspectRatio="xMidYMid slice"/>'
-                 f'<text x="{x:.1f}" y="{height + 32}" style="{PRINT};font-size:{SIZES["label"]}px" fill="{colors["muted"]}">{label}</text>')
-    body += f'<text style="{PRINT};font-size:{SIZES["thesis"]}px" fill="{colors["text"]}">{wrapped(560, 60, THESIS, 40, 28)}</text>'
-    return svg(1000, height + 42, THESIS, body)
-
-
-def stamp_sheet(colors, per_row=6):
-    body, index = "", 0
-    for area, items in STACK.items():
-        for slug, name in items:
-            row, col = divmod(index, per_row)
-            x, y = 20 + col * 162, 20 + row * 176
-            inner = (f'<rect x="{x + 10}" y="{y + 10}" width="120" height="136" fill="{colors["tints"][area]}"/>{icon(slug, x + 70, y + 66, 46, colors["sheet_ink"])}'
-                     f'<text x="{x + 70}" y="{y + 128}" text-anchor="middle" style="{PRINT};font-size:{SIZES["stamp_name"]}px;font-weight:600" fill="{colors["sheet_ink"]}">{name}</text>'
-                     f'<text x="{x + 18}" y="{y + 26}" style="{PRINT};font-size:{SIZES["stamp_area"]}px;font-weight:700" fill="{colors["sheet_ink"]}" opacity=".6">{area}</text>')
-            body += perforated(x + 4, y + 4, 132, 148, f"stamp{index}", colors["sheet"], inner)
-            index += 1
-    rows = -(-index // per_row)
-    label = "Stack: " + "; ".join(f"{area}: " + ", ".join(name for _slug, name in items) for area, items in STACK.items())
-    return svg(1000, 20 + rows * 176, label, body)
+    for i, (slug, name) in enumerate(MATERIALS):
+        row, col = divmod(i, per_row)
+        x, y = 40 + col * 110, 36 + row * 100
+        body += (icon(slug, x, y, 30, colors["ink"])
+                 + f'<text x="{x}" y="{y + 44}" text-anchor="middle" style="{FONT};font-size:{SIZES["material"]}px" fill="{colors["soft"]}">{name}</text>')
+    rows = -(-len(MATERIALS) // per_row)
+    return svg(1000, rows * 100 - 4, "Materiales: " + ", ".join(name for _slug, name in MATERIALS), body)
 
 
 def write(name, content):
@@ -148,8 +117,8 @@ def write(name, content):
 
 ASSETS.mkdir(exist_ok=True)
 for theme, colors in THEMES.items():
-    write(f"banner-{theme}.svg", postcard(colors))
-    write(f"thesis-{theme}.svg", thesis(colors))
-    write(f"stack-{theme}.svg", stamp_sheet(colors))
+    write(f"banner-{theme}.svg", wall(colors))
+    write(f"thesis-{theme}.svg", framed_thesis(colors))
+    write(f"stack-{theme}.svg", materials(colors))
     for project in PROJECTS:
-        write(f"{project['slug']}-{theme}.svg", project_card(colors, project))
+        write(f"{project['slug']}-{theme}.svg", placard(colors, project))
