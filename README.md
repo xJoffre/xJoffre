@@ -53,7 +53,4 @@ Detección de defectos en llantas con transfer learning sobre VGG16. El modelo a
 
 ## Contribuciones
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/xJoffre/xJoffre/output/snake-dark.svg">
-  <img alt="Una serpiente recorre el gráfico de contribuciones" src="https://raw.githubusercontent.com/xJoffre/xJoffre/output/snake.svg">
-</picture>
+<img src="game.gif" width="100%" alt="Una nave recorre el gráfico de contribuciones y dispara a cada bloque">
