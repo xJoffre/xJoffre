@@ -7,9 +7,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 ASSETS = ROOT / "assets"
 
-HAND = "font-family:'Shadows Into Light','Segoe Print',cursive"
 PRINT = "font-family:'Libre Franklin','Helvetica Neue',Arial,sans-serif"
-SIZES = {"name": 44, "message": 26, "address": 28, "card_title": 34, "card_text": 22, "thesis": 22, "label": 20,
+SIZES = {"name": 44, "message": 21, "address": 21, "card_title": 28, "card_text": 17, "thesis": 18, "label": 14,
          "stamp_name": 13, "stamp_area": 10, "stamp_caption": 12, "postmark": 13, "postmark_year": 16}
 THEMES = {
     "light": {"paper": "#FDFDFB", "edge": "#DDDDD6", "line": "#D8D8D2", "ink": "#24324A", "ink_soft": "#3A4660", "text": "#222222", "muted": "#6B6B6B",
@@ -28,7 +27,7 @@ ADDRESS = ["Para: tu equipo", "Asunto: hola", "De: Loja, Ecuador"]
 POSTMARK = "LOJA   NOV 2026   UNL"
 PROJECTS = [
     {"slug": "aura", "name": "AURA", "icon": "expo", "summary": "Una app de citas que hice para el emprendimiento de un cliente. Está en Google Play."},
-    {"slug": "pic", "name": "Defectos en llantas", "icon": "tensorflow", "summary": "Mi tesis: un modelo que separa llantas buenas de defectuosas. Acierta el 94,9 % en prueba."},
+    {"slug": "pic", "name": "Defectos en llantas", "icon": "tensorflow", "summary": "Mi tesis: un modelo que separa llantas buenas de defectuosas. Acierta el 94,9 % en prueba."},
     {"slug": "el-mirador", "name": "El Mirador", "icon": "springboot", "summary": "Un sistema de pedidos para un bar-restaurante. La cocina ve cada pedido en vivo."},
     {"slug": "jengat", "name": "Jengat", "icon": "godotengine", "summary": "Un juego de fiesta en 3D para Android, con una torre de bloques y física real."},
 ]
@@ -49,8 +48,6 @@ def encode(path):
 
 
 FONT_FACES = {
-    HAND: "@font-face{font-family:'Shadows Into Light';"
-          f"src:url(data:font/woff2;base64,{encode(SCRIPTS / 'fonts' / 'shadows-into-light.woff2')}) format('woff2')}}",
     PRINT: "@font-face{font-family:'Libre Franklin';font-weight:400 700;"
            f"src:url(data:font/woff2;base64,{encode(SCRIPTS / 'fonts' / 'libre-franklin.woff2')}) format('woff2')}}",
 }
@@ -98,12 +95,12 @@ def postcard(colors):
                 f'<text style="{PRINT};font-size:{SIZES["postmark"]}px;font-weight:700;letter-spacing:3px" fill="{mark}" xml:space="preserve"><textPath href="#ring" startOffset="2%">{POSTMARK}</textPath></text>'
                 f'<text x="702" y="134" text-anchor="middle" style="{PRINT};font-size:{SIZES["postmark_year"]}px;font-weight:700" fill="{mark}">2026</text>{waves}</g>')
     lines = "".join(f'<line x1="560" y1="{y}" x2="950" y2="{y}" stroke="{colors["line"]}" stroke-width="1.5"/>' for y in (330, 380, 430))
-    address = "".join(f'<text x="566" y="{322 + i * 50}" style="{HAND};font-size:{SIZES["address"]}px" fill="{colors["ink"]}">{row}</text>' for i, row in enumerate(ADDRESS))
+    address = "".join(f'<text x="566" y="{320 + i * 50}" style="{PRINT};font-size:{SIZES["address"]}px" fill="{colors["ink"]}">{row}</text>' for i, row in enumerate(ADDRESS))
     body = (f'<defs><path id="ring" d="M 640 128 a 62 62 0 1 1 124 0 a 62 62 0 1 1 -124 0"/></defs>'
             f'<rect x="1" y="1" width="998" height="498" rx="6" fill="{colors["paper"]}" stroke="{colors["edge"]}"/>'
             f'<line x1="520" y1="40" x2="520" y2="460" stroke="{colors["line"]}" stroke-width="2"/>'
-            f'<text x="40" y="74" style="{HAND};font-size:{SIZES["name"]}px" fill="{colors["ink"]}">{NAME}</text>'
-            f'<text style="{HAND};font-size:{SIZES["message"]}px" fill="{colors["ink"]}">{wrapped(42, 132, MESSAGE, 38, 38)}</text>'
+            f'<text x="40" y="84" style="{PRINT};font-size:{SIZES["name"]}px;font-weight:600;letter-spacing:-.5px" fill="{colors["ink"]}">{NAME}</text>'
+            f'<text style="{PRINT};font-size:{SIZES["message"]}px" fill="{colors["ink"]}">{wrapped(42, 142, MESSAGE, 38, 34)}</text>'
             f'{perforated(786, 42, 144, 164, "stamp", colors["stamp_border"], art)}{postmark}{lines}{address}')
     return svg(1000, 500, MESSAGE, body)
 
@@ -112,8 +109,8 @@ def project_card(colors, project):
     stamp = perforated(406, 22, 66, 76, "stamp", colors["sheet"],
                        f'<rect x="410" y="26" width="58" height="68" fill="{colors["mini_stamp"]}"/>{icon(project["icon"], 439, 60, 30, colors["ink"])}')
     body = (f'<rect x="1" y="1" width="498" height="198" rx="6" fill="{colors["paper"]}" stroke="{colors["edge"]}"/>{stamp}'
-            f'<text x="28" y="58" style="{HAND};font-size:{SIZES["card_title"]}px" fill="{colors["ink"]}">{project["name"]}</text>'
-            f'<text style="{HAND};font-size:{SIZES["card_text"]}px" fill="{colors["ink_soft"]}">{wrapped(30, 100, project["summary"], 38, 28)}</text>')
+            f'<text x="28" y="60" style="{PRINT};font-size:{SIZES["card_title"]}px;font-weight:600" fill="{colors["ink"]}">{project["name"]}</text>'
+            f'<text style="{PRINT};font-size:{SIZES["card_text"]}px" fill="{colors["ink_soft"]}">{wrapped(30, 106, project["summary"], 38, 26)}</text>')
     return svg(500, 200, f'{project["name"]}: {project["summary"]}', body)
 
 
@@ -124,8 +121,8 @@ def thesis(colors, height=220, gap=16):
         x = i * (width + gap)
         body += (f'<image href="data:image/jpeg;base64,{encode(SCRIPTS / "img" / file)}" x="{x:.1f}" y="10" '
                  f'width="{width:.1f}" height="{height}" preserveAspectRatio="xMidYMid slice"/>'
-                 f'<text x="{x:.1f}" y="{height + 32}" style="{HAND};font-size:{SIZES["label"]}px" fill="{colors["muted"]}">{label}</text>')
-    body += f'<text style="{HAND};font-size:{SIZES["thesis"]}px" fill="{colors["text"]}">{wrapped(560, 60, THESIS, 36, 34)}</text>'
+                 f'<text x="{x:.1f}" y="{height + 32}" style="{PRINT};font-size:{SIZES["label"]}px" fill="{colors["muted"]}">{label}</text>')
+    body += f'<text style="{PRINT};font-size:{SIZES["thesis"]}px" fill="{colors["text"]}">{wrapped(560, 60, THESIS, 40, 28)}</text>'
     return svg(1000, height + 42, THESIS, body)
 
 
