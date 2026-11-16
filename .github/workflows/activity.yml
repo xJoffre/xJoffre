@@ -1,4 +1,4 @@
-name: tetris
+name: activity
 
 on:
   schedule:
@@ -6,21 +6,21 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [.github/workflows/tetris.yml]
+    paths: [.github/workflows/activity.yml, scripts/activity.py, scripts/receipt.py, scripts/fonts/**]
 
 permissions:
   contents: write
 
 jobs:
-  generate:
+  print:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
-      - uses: JuhaP2/contribution-tetris@07b9e603cca91b2f1bbe1f5378238b386dfb127b
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          output_dir: dist
-          games: tetris
+      - uses: actions/checkout@v6
+      - run: python3 scripts/activity.py "$OWNER" dist
+        env:
+          OWNER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: crazy-max/ghaction-github-pages@v5
         with:
           target_branch: output
