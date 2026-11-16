@@ -16,7 +16,7 @@
 
 ## Stack
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=ts,js,py,java,react,vite,tailwind,spring,postgres,firebase,tensorflow,opencv,docker,githubactions,godot&perline=8"><img src="https://skillicons.dev/icons?i=ts,js,py,java,react,vite,tailwind,spring,postgres,firebase,tensorflow,opencv,docker,githubactions,godot&perline=8&theme=light" alt="TypeScript, JavaScript, Python, Java, React, Vite, Tailwind CSS, Spring Boot, PostgreSQL, Firebase, TensorFlow, OpenCV, Docker, GitHub Actions, Godot"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=ts%2Cjs%2Cpy%2Cjava%2Creact%2Cvite%2Ctailwind%2Cspring%2Cpostgres%2Cfirebase%2Ctensorflow%2Copencv%2Cdocker%2Cgithubactions%2Cgodot&perline=8"><img src="https://skillicons.dev/icons?i=ts,js,py,java,react,vite,tailwind,spring,postgres,firebase,tensorflow,opencv,docker,githubactions,godot&perline=8&theme=light" alt="TypeScript, JavaScript, Python, Java, React, Vite, Tailwind CSS, Spring Boot, PostgreSQL, Firebase, TensorFlow, OpenCV, Docker, GitHub Actions, Godot"></picture>
 
 ## Contribuciones
 
