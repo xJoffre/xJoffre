@@ -1,22 +1,18 @@
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg"><img src="assets/banner-light.svg" width="100%" alt="Joffre Orellana. Ingeniero en Ciencias de la Computación. Hago apps web y móviles, y modelos de visión por computadora."></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg"><img src="assets/banner-light.svg" width="100%" alt="Hola, soy Joffre. Me gradué de Ingeniería en Ciencias de la Computación en la UNL, en Loja. Hago apps web y móviles, y en mi tesis entrené un modelo que encuentra llantas defectuosas. Abajo te dejo lo que he hecho. Un saludo, Joffre."></picture>
 
 ## Proyectos
 
-<a href="https://play.google.com/store/apps/details?id=com.aurals.app"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/aura-dark.svg"><img src="assets/aura-light.svg" width="100%" alt="AURA, en Google Play: app de citas para el emprendimiento de un cliente. Likes, tokens y compras se validan en el servidor."></picture></a>
+<a href="https://play.google.com/store/apps/details?id=com.aurals.app"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/aura-dark.svg"><img src="assets/aura-light.svg" width="49%" alt="AURA: una app de citas que hice para el emprendimiento de un cliente. Está en Google Play."></picture></a> <a href="https://github.com/xJoffre/PIC"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/pic-dark.svg"><img src="assets/pic-light.svg" width="49%" alt="Defectos en llantas: mi tesis, un modelo que separa llantas buenas de defectuosas. Acierta el 94,9 % en prueba."></picture></a>
 
-<a href="https://github.com/xJoffre/PIC"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/pic-dark.svg"><img src="assets/pic-light.svg" width="100%" alt="Defectos en llantas, tesis: transfer learning sobre VGG16; acierta el 94,9 % de las llantas de prueba."></picture></a>
-
-<a href="https://github.com/xJoffre/el-mirador"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/el-mirador-dark.svg"><img src="assets/el-mirador-light.svg" width="100%" alt="El Mirador, proyecto personal: pedidos en línea para un bar-restaurante, con cocina en vivo y un panel para cada rol."></picture></a>
-
-<a href="https://github.com/xJoffre/Jengat"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/jengat-dark.svg"><img src="assets/jengat-light.svg" width="100%" alt="Jengat, proyecto personal: juego de fiesta 3D para Android con física real."></picture></a>
+<a href="https://github.com/xJoffre/el-mirador"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/el-mirador-dark.svg"><img src="assets/el-mirador-light.svg" width="49%" alt="El Mirador: un sistema de pedidos para un bar-restaurante. La cocina ve cada pedido en vivo."></picture></a> <a href="https://github.com/xJoffre/Jengat"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/jengat-dark.svg"><img src="assets/jengat-light.svg" width="49%" alt="Jengat: un juego de fiesta en 3D para Android, con una torre de bloques y física real."></picture></a>
 
 ## Tesis
 
-<a href="https://github.com/xJoffre/PIC#resultados"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/thesis-dark.svg"><img src="assets/thesis-light.svg" width="100%" alt="Mi tesis detecta llantas defectuosas con transfer learning sobre VGG16. Acierta 242 de 255 llantas de prueba y encuentra 126 de las 130 defectuosas."></picture></a>
+<a href="https://github.com/xJoffre/PIC#resultados"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/thesis-dark.svg"><img src="assets/thesis-light.svg" width="100%" alt="Mi tesis: transfer learning sobre VGG16. Acierta 242 de 255 llantas de prueba y encuentra 126 de las 130 defectuosas."></picture></a>
 
 ## Stack
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=ts%2Cjs%2Cpy%2Cjava%2Creact%2Cvite%2Ctailwind%2Cspring%2Cpostgres%2Cfirebase%2Ctensorflow%2Copencv%2Cdocker%2Cgithubactions%2Cgodot&perline=8"><img src="https://skillicons.dev/icons?i=ts,js,py,java,react,vite,tailwind,spring,postgres,firebase,tensorflow,opencv,docker,githubactions,godot&perline=8&theme=light" alt="TypeScript, JavaScript, Python, Java, React, Vite, Tailwind CSS, Spring Boot, PostgreSQL, Firebase, TensorFlow, OpenCV, Docker, GitHub Actions, Godot"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Stack: Python, TensorFlow, Keras, OpenCV, TypeScript, JavaScript, React, Vite, Tailwind, Java, Spring, PostgreSQL, Docker, GitHub Actions, Expo, Firebase, Android y Godot."></picture>
 
 ## Contribuciones
 
