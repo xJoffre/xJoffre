@@ -5,24 +5,21 @@ import sys
 import urllib.request
 from pathlib import Path
 
-from receipt import SIZES, THEMES, Receipt
+from receipt import FONT, LEFT, RIGHT, SIZES, THEMES, Receipt
 
 QUERY = """
 query($login: String!) {
   user(login: $login) {
     contributionsCollection {
-      totalCommitContributions
-      totalPullRequestContributions
-      totalIssueContributions
-      totalPullRequestReviewContributions
-      restrictedContributionsCount
-      contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } }
+      contributionCalendar { totalContributions weeks { contributionDays { date contributionLevel } } }
     }
   }
 }
 """
-WEEKDAYS = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 MONTHS = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+LEVELS = {"NONE": 0, "FIRST_QUARTILE": 1, "SECOND_QUARTILE": 2, "THIRD_QUARTILE": 3, "FOURTH_QUARTILE": 4}
+DOT_RADII = (0.9, 1.6, 2.3, 3.0, 3.7)
+EMPTY_OPACITY = ".35"
 
 
 def fetch(login, token):
@@ -35,73 +32,68 @@ def fetch(login, token):
         payload = json.load(response)
     if "errors" in payload:
         raise SystemExit(f"GraphQL: {payload['errors']}")
-    return payload["data"]["user"]["contributionsCollection"]
+    return payload["data"]["user"]["contributionsCollection"]["contributionCalendar"]
 
 
-def day_label(date):
-    return f"{WEEKDAYS[date.weekday()]} {date.day:02d} {MONTHS[date.month - 1]}"
+def dot(colors, x, y, level):
+    opacity = "1" if level else EMPTY_OPACITY
+    return f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{DOT_RADII[level]}" fill="{colors["ink"]}" opacity="{opacity}"/>'
 
 
-def streaks(days):
-    longest = run = 0
-    for _date, count in days:
-        run = run + 1 if count else 0
-        longest = max(longest, run)
-    counts = [count for _date, count in days]
-    if counts and counts[-1] == 0:
-        counts.pop()
-    current = 0
-    for count in reversed(counts):
-        if not count:
-            break
-        current += 1
-    return current, longest
+def month_labels(colors, weeks, step, y):
+    labels, previous = "", None
+    for i, week in enumerate(weeks[:-2]):
+        month = datetime.date.fromisoformat(week[0]["date"]).month
+        if month != previous:
+            labels += f'<text x="{LEFT + i * step:.1f}" y="{y}" style="{FONT};font-size:{SIZES["month"]}px" fill="{colors["note"]}">{MONTHS[month - 1]}</text>'
+            previous = month
+    return labels
 
 
-def plural(number, one, many):
-    return f"{number} {one if number == 1 else many}"
+def grid(colors, weeks, step, top):
+    dots = ""
+    for i, week in enumerate(weeks):
+        for day in week:
+            row = datetime.date.fromisoformat(day["date"]).isoweekday() % 7
+            dots += dot(colors, LEFT + (i + .5) * step, top + (row + .5) * step, LEVELS[day["contributionLevel"]])
+    return dots
 
 
-def ticket(colors, login, stats, days, printed):
-    current, longest = streaks(days)
-    busiest_date, busiest_count = max(days, key=lambda day: day[1])
+def legend(colors, y):
+    x = LEFT + 62
+    dots = "".join(dot(colors, x + level * 14, y - 4, level) for level in range(len(DOT_RADII)))
+    caption = f'style="{FONT};font-size:{SIZES["legend"]}px" fill="{colors["note"]}"'
+    return f'<text x="{LEFT}" y="{y}" {caption}>menos</text>{dots}<text x="{x + len(DOT_RADII) * 14}" y="{y}" {caption}>más</text>'
+
+
+def ticket(colors, login, calendar, printed):
+    weeks = [week["contributionDays"] for week in calendar["weeks"]]
+    total = calendar["totalContributions"]
+    step = (RIGHT - LEFT) / len(weeks)
     sheet = Receipt(colors)
-    sheet.center("ACTIVIDAD EN GITHUB", SIZES["title"], 700, 30)
+    sheet.center("GRÁFICO IMPRESO", SIZES["title"], 700, 30)
     sheet.center(f"github.com/{login}", SIZES["small"])
     sheet.center(f"Impreso: {printed.day:02d} {MONTHS[printed.month - 1]} {printed.year}, {printed:%H:%M} UTC", SIZES["small"], gap=30)
     sheet.rule()
-    sheet.pair("ÚLTIMOS 7 DÍAS", "CONTRIB.", SIZES["small"], 700)
-    for date, count in days[-7:]:
-        sheet.pair(day_label(date), str(count))
+    sheet.draw(month_labels(colors, weeks, step, sheet.y), 12)
+    sheet.draw(grid(colors, weeks, step, sheet.y), 7 * step + 22)
+    sheet.draw(legend(colors, sheet.y), 26)
     sheet.rule()
-    sheet.pair("ÚLTIMO AÑO", size=SIZES["small"], weight=700)
-    for label, key in (("Commits", "totalCommitContributions"), ("Pull requests", "totalPullRequestContributions"),
-                       ("Issues", "totalIssueContributions"), ("Revisiones", "totalPullRequestReviewContributions"),
-                       ("En repos privados", "restrictedContributionsCount")):
-        if stats[key]:
-            sheet.pair(label, str(stats[key]))
-    sheet.pair("Racha actual", plural(current, "día", "días"))
-    sheet.pair("Racha más larga", plural(longest, "día", "días"))
-    sheet.pair("Día más activo", f"{day_label(busiest_date)} ({busiest_count})")
-    sheet.rule()
-    total = stats["contributionCalendar"]["totalContributions"]
-    sheet.pair("TOTAL", plural(total, "contribución", "contribuciones"), SIZES["total"], 700)
+    sheet.pair("TOTAL", f"{total} {'contribución' if total == 1 else 'contribuciones'}", SIZES["total"], 700)
     sheet.rule()
     sheet.center("Se imprime de nuevo cada día", SIZES["small"], gap=18)
     sheet.barcode(printed.date().isoformat())
     sheet.center(printed.date().isoformat(), SIZES["caption"], gap=30)
-    return sheet.render(f"Actividad en GitHub de {login}: {total} contribuciones en el último año, racha actual de {current} días.")
+    return sheet.render(f"Gráfico de contribuciones de {login} impreso en puntos: {total} contribuciones en el último año.")
 
 
 def main():
     login, out_dir = sys.argv[1], Path(sys.argv[2])
-    stats = fetch(login, os.environ["GITHUB_TOKEN"])
-    days = [(datetime.date.fromisoformat(day["date"]), day["contributionCount"])
-            for week in stats["contributionCalendar"]["weeks"] for day in week["contributionDays"]]
+    calendar = fetch(login, os.environ["GITHUB_TOKEN"])
     printed = datetime.datetime.now(datetime.timezone.utc)
     out_dir.mkdir(parents=True, exist_ok=True)
     for theme, colors in THEMES.items():
-        (out_dir / f"activity-{theme}.svg").write_text(ticket(colors, login, stats, days, printed), encoding="utf-8", newline="\n")
+        (out_dir / f"activity-{theme}.svg").write_text(ticket(colors, login, calendar, printed), encoding="utf-8", newline="\n")
 
 
 main()

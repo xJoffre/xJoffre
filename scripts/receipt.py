@@ -6,7 +6,7 @@ from pathlib import Path
 FONTS = Path(__file__).resolve().parent / "fonts"
 FONT = "font-family:'Receipt Mono','Courier New',monospace"
 WIDTH, LEFT, RIGHT = 520, 34, 486
-SIZES = {"title": 24, "body": 15, "small": 14, "note": 13, "total": 18, "caption": 13, "thesis": 18}
+SIZES = {"title": 24, "body": 15, "small": 14, "note": 13, "total": 18, "caption": 13, "thesis": 18, "legend": 12, "month": 10}
 THEMES = {
     "light": {"paper": "#FFFFFF", "ink": "#1A1A1A", "note": "#666666", "edge": "none", "shadow": ".18", "text": "#222222", "muted": "#6B6B6B"},
     "dark": {"paper": "#1C2128", "ink": "#E6EDF3", "note": "#8B949E", "edge": "#30363D", "shadow": "0", "text": "#E6EDF3", "muted": "#9198A1"},
@@ -55,6 +55,10 @@ class Receipt:
         rows = textwrap.wrap(text, width)
         self.rows.append(f'<text style="{FONT};font-size:{SIZES["note"]}px" fill="{self.colors["note"]}">{wrapped(LEFT + 18, self.y - 4, text, width, leading)}</text>')
         self.y += leading * len(rows)
+
+    def draw(self, markup, height):
+        self.rows.append(markup)
+        self.y += height
 
     def rule(self):
         self.rows.append(f'<line x1="{LEFT}" y1="{self.y - 8}" x2="{RIGHT}" y2="{self.y - 8}" stroke="{self.colors["ink"]}" stroke-dasharray="5 4"/>')

@@ -8,4 +8,4 @@
 
 ## Actividad
 
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/xJoffre/xJoffre/output/activity-dark.svg"><img src="https://raw.githubusercontent.com/xJoffre/xJoffre/output/activity-light.svg" width="520" alt="Ticket de actividad en GitHub que se imprime de nuevo cada día: contribuciones de los últimos 7 días, rachas y total del año."></picture></p>
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/xJoffre/xJoffre/output/activity-dark.svg"><img src="https://raw.githubusercontent.com/xJoffre/xJoffre/output/activity-light.svg" width="520" alt="Mi gráfico de contribuciones del último año impreso en puntos térmicos sobre un ticket que se imprime de nuevo cada día."></picture></p>
