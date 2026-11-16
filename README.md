@@ -1,6 +1,8 @@
-# Joffre Orellana
+<p align="center">
+  <img src="header.svg" width="100%" alt="Joffre Orellana: desarrollo web, móvil e IA">
+</p>
 
-Ingeniero en Ciencias de la Computación (Universidad Nacional de Loja, 2026), itinerario de Sistemas Inteligentes, en Loja, Ecuador. Desarrollo apps web y móviles, y modelos de visión por computadora. Cuido lo que pasa después de publicar: lógica crítica en el servidor, pruebas automáticas y respaldos que se verifican solos.
+Ingeniero en Ciencias de la Computación (Universidad Nacional de Loja, 2026), itinerario de Sistemas Inteligentes. Desarrollo apps web y móviles, y modelos de visión por computadora. Cuido lo que pasa después de publicar: lógica crítica en el servidor, pruebas automáticas y respaldos que se verifican solos.
 
 ## Proyectos
 
@@ -11,4 +13,11 @@ Ingeniero en Ciencias de la Computación (Universidad Nacional de Loja, 2026), i
 
 ## Stack
 
-TypeScript · Python · Java · SQL · React · React Native · Expo · Spring Boot · PostgreSQL · Firebase · TensorFlow · Docker · GitHub Actions
+<img src="https://skillicons.dev/icons?i=ts,js,py,java,react,vite,tailwind,spring,postgres,firebase,tensorflow,opencv,docker,githubactions,godot&perline=8" alt="TypeScript, JavaScript, Python, Java, React, Vite, Tailwind CSS, Spring Boot, PostgreSQL, Firebase, TensorFlow, OpenCV, Docker, GitHub Actions, Godot">
+
+## Contribuciones
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/xJoffre/xJoffre/output/snake-dark.svg">
+  <img alt="Una serpiente recorre el gráfico de contribuciones" src="https://raw.githubusercontent.com/xJoffre/xJoffre/output/snake.svg">
+</picture>
