@@ -1,0 +1,29 @@
+name: tetris
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/tetris.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: JuhaP2/contribution-tetris@07b9e603cca91b2f1bbe1f5378238b386dfb127b
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          output_dir: dist
+          games: tetris
+      - uses: crazy-max/ghaction-github-pages@v5
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

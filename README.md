@@ -16,4 +16,4 @@
 
 ## Contribuciones
 
-<img src="game.gif" width="100%" alt="Una nave recorre el gráfico de contribuciones y dispara a cada bloque">
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/xJoffre/xJoffre/output/tetris-dark.svg"><img src="https://raw.githubusercontent.com/xJoffre/xJoffre/output/tetris-light.svg" width="360" alt="Partida de Tetris cuyo puntaje final es mi número de contribuciones del último año"></picture></p>
